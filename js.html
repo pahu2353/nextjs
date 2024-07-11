@@ -1,0 +1,41 @@
+<!-- Chapter 1-3: JS -->
+<html>
+
+<body>
+    <div id="app"></div>
+    <script type="text/javascript">
+        /* 
+        Imperative vs Declarative Programming
+
+        Imperative
+        - js: how the user interface should be updated
+        
+        Declarative
+        - react: declare what you want to show (e.g., h1 with some text)
+        
+        "In other words, imperative programming is like giving a chef step-by-step instructions on how to make a pizza. 
+        Declarative programming is like ordering a pizza without being concerned about the steps it takes to make the pizza. 🍕"
+        
+        - thus, in react you as the developer tell React what you want to happen to the UI. react will figure out how to update dom.
+
+        */
+
+        // Select div with 'app' id
+        const app = document.getElementById('app');
+
+        // Create h1 element named 'header'
+        const header = document.createElement('h1');
+
+        // Create new text node for h1 element
+        const text = 'Developer. Preview. Ship.';
+        const headerContent = document.createTextNode(text);
+
+        header.appendChild(headerContent);
+
+        // Place h1 element inside 'app' div
+        app.appendChild(header);
+
+    </script>
+</body>
+
+</html>
