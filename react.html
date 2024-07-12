@@ -1,0 +1,59 @@
+<!-- Chapter 4-7: React -->
+<html>
+
+<body>
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Browsers don't understand JSX out of the box  -->
+    <!-- JavaScript compiler like Babel transforms JSX to JavaScript -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel"> // text/jsx is written in tutorial, but highlighting doesn't work. see: https://github.com/textmate/html.tmbundle/issues/119
+
+        // This declarative code cuts down on a lot of repetitive code
+        const app = document.getElementById('app');
+
+        function Header({ title }) {
+            return <h1>{title ? title : 'Default title'}</h1>;
+        }
+
+        // Form component tree by nesting component
+        function HomePage() {
+
+            // State: information in UI that changes over time
+            // Usually triggered by user interaction  
+            const[likes, setLikes] = React.useState(0);
+
+            function handleClick(){
+                setLikes(likes + 1);
+            }
+
+            const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+            return (
+                <div>
+                    <Header title="Develop. Preview. Ship" />
+                    <ul>
+                        {names.map((name) => ( // Returns array of <li> elements
+                            <li key={name}>{name}</li> // React needs key to know what element in DOM to update
+                        ))}    
+                    </ul>
+                    <button onClick={handleClick}>Like ({likes})</button>
+                </div>
+            );
+        }
+
+
+        const root = ReactDOM.createRoot(app);
+        root.render(<HomePage />);
+
+        // const header = document.createElement('h1');
+        // const text = 'Developer. Preview. Ship.';
+        // const headerContent = document.createTextNode(text);
+        // header.appendChild(headerContent);
+        // app.appendChild(header);
+    </script>
+</body>
+
+</html>
